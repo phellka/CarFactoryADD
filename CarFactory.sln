@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryView", "CarFactoryView\CarFactoryView.csproj", "{03DACD2D-EF73-4450-B890-E4FA73E45DF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryView", "CarFactoryView\CarFactoryView.csproj", "{03DACD2D-EF73-4450-B890-E4FA73E45DF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryContracts", "CarFactoryContracts\CarFactoryContracts.csproj", "{974F1FB0-D4E6-4CFE-B2AC-E4EE9ADF204D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryContracts", "CarFactoryContracts\CarFactoryContracts.csproj", "{974F1FB0-D4E6-4CFE-B2AC-E4EE9ADF204D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryBusinessLogic", "CarFactoryBusinessLogic\CarFactoryBusinessLogic.csproj", "{757BE800-B622-4B0E-8E82-1D1958DC009D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryBusinessLogic", "CarFactoryBusinessLogic\CarFactoryBusinessLogic.csproj", "{757BE800-B622-4B0E-8E82-1D1958DC009D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryListImplement", "CarFactoryListImplement\CarFactoryListImplement.csproj", "{CBF4562F-B9E9-405C-BA52-DE5ABD3C24CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryListImplement", "CarFactoryListImplement\CarFactoryListImplement.csproj", "{CBF4562F-B9E9-405C-BA52-DE5ABD3C24CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryFileImplement", "CarFactoryFileImplement\CarFactoryFileImplement.csproj", "{BD3F7CA4-B653-41CE-821B-D8A17F326800}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CBF4562F-B9E9-405C-BA52-DE5ABD3C24CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBF4562F-B9E9-405C-BA52-DE5ABD3C24CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBF4562F-B9E9-405C-BA52-DE5ABD3C24CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD3F7CA4-B653-41CE-821B-D8A17F326800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD3F7CA4-B653-41CE-821B-D8A17F326800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD3F7CA4-B653-41CE-821B-D8A17F326800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD3F7CA4-B653-41CE-821B-D8A17F326800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
