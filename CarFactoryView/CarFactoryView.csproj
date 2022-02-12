@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Unity" Version="5.11.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarFactoryBusinessLogic\CarFactoryBusinessLogic.csproj" />
+    <ProjectReference Include="..\CarFactoryContracts\CarFactoryContracts.csproj" />
+    <ProjectReference Include="..\CarFactoryListImplement\CarFactoryListImplement.csproj" />
+  </ItemGroup>
+
+</Project>
