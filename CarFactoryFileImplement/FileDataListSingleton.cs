@@ -38,11 +38,11 @@ namespace CarFactoryFileImplement
             }
             return instance;
         }
-        ~FileDataListSingleton()
+        public void Save()
         {
+            SaveCars();
             SaveComponents();
             SaveOrders();
-            SaveCars();
             SaveWarehouses();
         }
         private List<Component> LoadComponents()
@@ -164,7 +164,7 @@ namespace CarFactoryFileImplement
                 xDocument.Save(ComponentFileName);
             }
         }
-        public void SaveOrders()
+        private void SaveOrders()
         {
             if (Orders != null)
             {
@@ -184,7 +184,7 @@ namespace CarFactoryFileImplement
                 xDocument.Save(OrderFileName);
             }
         }
-        public void SaveCars()
+        private void SaveCars()
         {
             if (Cars != null)
             {
@@ -208,7 +208,7 @@ namespace CarFactoryFileImplement
                 xDocument.Save(CarFileName);
             }
         }
-        public void SaveWarehouses()
+        private void SaveWarehouses()
         {
             if (Warehouses != null)
             {
