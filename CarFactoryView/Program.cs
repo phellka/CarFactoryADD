@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarFactoryBusinessLogic.BusinessLogics;
-using CarFactoryFileImplement.Implements;
-using CarFactoryFileImplement;
+using CarFactoryDatabaseImplement.Implements;
 using CarFactoryContracts.BusinessLogicsContracts;
 using CarFactoryContracts.StoragesContracts;
 using Unity;
@@ -37,7 +36,6 @@ namespace CarFactoryView
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(Container.Resolve<FormMain>());
-            FileDataListSingleton.GetInstance().Save();
         }
         private static IUnityContainer BuildUnityContainer()
         {

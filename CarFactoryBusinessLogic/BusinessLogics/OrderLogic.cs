@@ -54,11 +54,16 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             }
             CarViewModel tempCar = carStorage.GetElement(new CarBindingModel
                 { Id = tempOrder.CarId});
-            if (!warehouseStorage.CheckBalance(tempCar.CarComponents.ToDictionary(car => car.Key, car => car.Value.Item2 * tempOrder.Count)))
-            {
-                throw new Exception("На складах недостаточно компонентов");
+            try{
+                if (!warehouseStorage.WriteOffBalance(tempCar.CarComponents.ToDictionary(car => car.Key, car => car.Value.Item2 * tempOrder.Count)))
+                {
+                    throw new Exception("На складах недостаточно компонентов");
+                }
             }
-            warehouseStorage.WriteOffBalance(tempCar.CarComponents.ToDictionary(car => car.Key, car => car.Value.Item2 * tempOrder.Count));
+            catch(Exception ex)
+            {
+                throw ex;
+            }
             tempOrder.Status = OrderStatus.Выполняется;
             tempOrder.DateImplement = DateTime.Now;
             orderStorage.Update(new OrderBindingModel { 
