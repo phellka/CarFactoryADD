@@ -38,8 +38,24 @@ namespace CarFactoryBusinessLogic.OfficePackage
             SaveWord(info);
 
         }
+        public void CreateDocWarehouse(WordInfo info)
+        {
+            CreateWord(info);
+            CreateParagraph(new WordParagraph
+            {
+                Texts = new List<(string, WordTextProperties)> { (info.Title, new WordTextProperties { Bold = true, Size = "24" }) },
+                TextProperties = new WordTextProperties
+                {
+                    Size = "24",
+                    JustificationType = WordJustificationType.Center
+                }
+            });
+            CreateTableWarehouses(info);
+            SaveWord(info);
+        }
         protected abstract void CreateWord(WordInfo info);
         protected abstract void CreateParagraph(WordParagraph paragraph);
         protected abstract void SaveWord(WordInfo info);
+        protected abstract void CreateTableWarehouses(WordInfo info);
     }
 }

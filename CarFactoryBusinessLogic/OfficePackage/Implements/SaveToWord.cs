@@ -91,5 +91,73 @@ namespace CarFactoryBusinessLogic.OfficePackage.Implements
             wordDocument.MainDocumentPart.Document.Save();
             wordDocument.Close();
         }
+        protected override void CreateTableWarehouses(WordInfo info)
+        {
+            Table table = new Table();
+
+            TableProperties tblProps = new TableProperties(
+                new TableBorders(
+                new TopBorder
+                {
+                    Val = new EnumValue<BorderValues>(BorderValues.Single),
+                    Size = 12
+                },
+                new BottomBorder
+                {
+                    Val = new EnumValue<BorderValues>(BorderValues.Single),
+                    Size = 12
+                },
+                new LeftBorder
+                {
+                    Val = new EnumValue<BorderValues>(BorderValues.Single),
+                    Size = 12
+                },
+                new RightBorder
+                {
+                    Val = new EnumValue<BorderValues>(BorderValues.Single),
+                    Size = 12
+                },
+                new InsideHorizontalBorder
+                {
+                    Val = new EnumValue<BorderValues>(BorderValues.Single),
+                    Size = 12
+                },
+                new InsideVerticalBorder
+                {
+                    Val = new EnumValue<BorderValues>(BorderValues.Single),
+                    Size = 12
+                }));
+
+            table.AppendChild<TableProperties>(tblProps);
+            docBody.AppendChild(table);
+            TableRow tableRowHeader = new TableRow();
+            TableCell cellHeaderName = new TableCell();
+            cellHeaderName.Append(new TableCellProperties( new TableCellWidth() { Type = TableWidthUnitValues.Auto}));
+            cellHeaderName.Append(new Paragraph(new Run(new Text("Название"))));
+            TableCell cellHeaderResponsible = new TableCell();
+            cellHeaderResponsible.Append(new TableCellProperties( new TableCellWidth() { Type = TableWidthUnitValues.Auto}));
+            cellHeaderResponsible.Append(new Paragraph(new Run(new Text("ФИО ответственного"))));
+            TableCell cellHeaderDateCreate = new TableCell();
+            cellHeaderDateCreate.Append(new TableCellProperties( new TableCellWidth() { Type = TableWidthUnitValues.Auto}));
+            cellHeaderDateCreate.Append(new Paragraph(new Run(new Text("Дата создания"))));
+            tableRowHeader.Append(cellHeaderName);
+            tableRowHeader.Append(cellHeaderResponsible);
+            tableRowHeader.Append(cellHeaderDateCreate);
+            table.Append(tableRowHeader);
+            foreach(var warehouse in info.Warehouses)
+            {
+                TableRow tableRowWarehouse = new TableRow();
+                TableCell CellWarehouseName = new TableCell();
+                TableCell CellWarehouseResponsible = new TableCell();
+                TableCell CellWarehouseDateCreate = new TableCell();
+                CellWarehouseName.Append(new Paragraph(new Run(new Text(warehouse.WarehouseName))));
+                CellWarehouseResponsible.Append(new Paragraph(new Run(new Text(warehouse.Responsible))));
+                CellWarehouseDateCreate.Append(new Paragraph(new Run(new Text(warehouse.DateCreate.ToString()))));
+                tableRowWarehouse.Append(CellWarehouseName);
+                tableRowWarehouse.Append(CellWarehouseResponsible);
+                tableRowWarehouse.Append(CellWarehouseDateCreate);
+                table.Append(tableRowWarehouse);
+            }
+        }
     }
 }
