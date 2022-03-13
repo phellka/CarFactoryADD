@@ -7,6 +7,8 @@ using CarFactoryBusinessLogic.BusinessLogics;
 using CarFactoryDatabaseImplement.Implements;
 using CarFactoryContracts.BusinessLogicsContracts;
 using CarFactoryContracts.StoragesContracts;
+using CarFactoryBusinessLogic.OfficePackage;
+using CarFactoryBusinessLogic.OfficePackage.Implements;
 using Unity;
 using Unity.Lifetime;
 
@@ -55,6 +57,14 @@ namespace CarFactoryView
             currentContainer.RegisterType<ICarLogic, CarLogic>(new
                 HierarchicalLifetimeManager());
             currentContainer.RegisterType<IWarehouseLogic, WarehouseLogic>(new
+                HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IReportLogic, ReportLogic>(new
+                HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToExcel, SaveToExcel>(new
+                HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToPdf, SaveToPdf>(new
+                HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToWord, SaveToWord>(new
                 HierarchicalLifetimeManager());
             return currentContainer;
         }
