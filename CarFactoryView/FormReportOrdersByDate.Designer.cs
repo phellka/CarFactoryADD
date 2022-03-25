@@ -31,11 +31,13 @@ namespace CarFactoryView
         {
             this.buttonToPdf = new System.Windows.Forms.Button();
             this.buttonMake = new System.Windows.Forms.Button();
+            this.panel = new System.Windows.Forms.Panel();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonToPdf
             // 
-            this.buttonToPdf.Location = new System.Drawing.Point(713, 12);
+            this.buttonToPdf.Location = new System.Drawing.Point(698, 13);
             this.buttonToPdf.Name = "buttonToPdf";
             this.buttonToPdf.Size = new System.Drawing.Size(75, 23);
             this.buttonToPdf.TabIndex = 7;
@@ -45,7 +47,7 @@ namespace CarFactoryView
             // 
             // buttonMake
             // 
-            this.buttonMake.Location = new System.Drawing.Point(467, 12);
+            this.buttonMake.Location = new System.Drawing.Point(463, 13);
             this.buttonMake.Name = "buttonMake";
             this.buttonMake.Size = new System.Drawing.Size(100, 23);
             this.buttonMake.TabIndex = 6;
@@ -53,15 +55,25 @@ namespace CarFactoryView
             this.buttonMake.UseVisualStyleBackColor = true;
             this.buttonMake.Click += new System.EventHandler(this.buttonMake_Click);
             // 
+            // panel
+            // 
+            this.panel.Controls.Add(this.buttonMake);
+            this.panel.Controls.Add(this.buttonToPdf);
+            this.panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel.Location = new System.Drawing.Point(0, 0);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(800, 50);
+            this.panel.TabIndex = 8;
+            // 
             // FormReportOrdersByDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonToPdf);
-            this.Controls.Add(this.buttonMake);
+            this.Controls.Add(this.panel);
             this.Name = "FormReportOrdersByDate";
             this.Text = "Заказы по датам";
+            this.panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -70,5 +82,6 @@ namespace CarFactoryView
 
         private System.Windows.Forms.Button buttonToPdf;
         private System.Windows.Forms.Button buttonMake;
+        private System.Windows.Forms.Panel panel;
     }
 }

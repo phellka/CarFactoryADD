@@ -23,14 +23,14 @@ namespace CarFactoryView
         {
             InitializeComponent();
             this.logic = logic;
-            //reportViewer = new ReportViewer
-            //{
-            //    Dock = DockStyle.Fill
-            //};
-            //reportViewer.LocalReport.LoadReportDefinition(new FileStream("ReportOrders.rdlc", FileMode.Open));
-            //Controls.Clear();
-            //Controls.Add(reportViewer);
-            //Controls.Add(panel);
+            reportViewer = new ReportViewer
+            {
+                Dock = DockStyle.Fill
+            };
+            reportViewer.LocalReport.LoadReportDefinition(new FileStream("ReportOrders.rdlc", FileMode.Open));
+            Controls.Clear();
+            Controls.Add(reportViewer);
+            Controls.Add(panel);
         }
 
         private void buttonMake_Click(object sender, EventArgs e)
@@ -61,7 +61,6 @@ namespace CarFactoryView
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
             }
-
         }
 
         private void buttonToPdf_Click(object sender, EventArgs e)

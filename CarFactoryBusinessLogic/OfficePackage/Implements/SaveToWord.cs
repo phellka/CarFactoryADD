@@ -15,6 +15,7 @@ namespace CarFactoryBusinessLogic.OfficePackage.Implements
     {
         private WordprocessingDocument wordDocument;
         private Body docBody;
+        private Table table;
         private static JustificationValues GetJustificationValues(WordJustificationType type)
         {
             return type switch
@@ -91,10 +92,9 @@ namespace CarFactoryBusinessLogic.OfficePackage.Implements
             wordDocument.MainDocumentPart.Document.Save();
             wordDocument.Close();
         }
-        protected override void CreateTableWarehouses(WordInfo info)
+        protected override void CreateTableWarehouses(List<string> tableHeaderInfo)
         {
-            Table table = new Table();
-
+            table = new Table();
             TableProperties tblProps = new TableProperties(
                 new TableBorders(
                 new TopBorder
@@ -131,33 +131,25 @@ namespace CarFactoryBusinessLogic.OfficePackage.Implements
             table.AppendChild<TableProperties>(tblProps);
             docBody.AppendChild(table);
             TableRow tableRowHeader = new TableRow();
-            TableCell cellHeaderName = new TableCell();
-            cellHeaderName.Append(new TableCellProperties( new TableCellWidth() { Type = TableWidthUnitValues.Auto}));
-            cellHeaderName.Append(new Paragraph(new Run(new Text("Название"))));
-            TableCell cellHeaderResponsible = new TableCell();
-            cellHeaderResponsible.Append(new TableCellProperties( new TableCellWidth() { Type = TableWidthUnitValues.Auto}));
-            cellHeaderResponsible.Append(new Paragraph(new Run(new Text("ФИО ответственного"))));
-            TableCell cellHeaderDateCreate = new TableCell();
-            cellHeaderDateCreate.Append(new TableCellProperties( new TableCellWidth() { Type = TableWidthUnitValues.Auto}));
-            cellHeaderDateCreate.Append(new Paragraph(new Run(new Text("Дата создания"))));
-            tableRowHeader.Append(cellHeaderName);
-            tableRowHeader.Append(cellHeaderResponsible);
-            tableRowHeader.Append(cellHeaderDateCreate);
-            table.Append(tableRowHeader);
-            foreach(var warehouse in info.Warehouses)
+            foreach(string stringHeaderCell in tableHeaderInfo)
             {
-                TableRow tableRowWarehouse = new TableRow();
-                TableCell CellWarehouseName = new TableCell();
-                TableCell CellWarehouseResponsible = new TableCell();
-                TableCell CellWarehouseDateCreate = new TableCell();
-                CellWarehouseName.Append(new Paragraph(new Run(new Text(warehouse.WarehouseName))));
-                CellWarehouseResponsible.Append(new Paragraph(new Run(new Text(warehouse.Responsible))));
-                CellWarehouseDateCreate.Append(new Paragraph(new Run(new Text(warehouse.DateCreate.ToString()))));
-                tableRowWarehouse.Append(CellWarehouseName);
-                tableRowWarehouse.Append(CellWarehouseResponsible);
-                tableRowWarehouse.Append(CellWarehouseDateCreate);
-                table.Append(tableRowWarehouse);
+                TableCell cellHeader = new TableCell();
+                cellHeader.Append(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Auto }));
+                cellHeader.Append(new Paragraph(new Run(new Text(stringHeaderCell))));
+                tableRowHeader.Append(cellHeader);
             }
+            table.Append(tableRowHeader);
+        }
+        protected void addRowTable(List<string> tableRowInfo)
+        {
+            TableRow tableRow = new TableRow();
+            foreach (string cell in tableRowInfo)
+            {
+                TableCell tableCell = new TableCell();
+                tableCell.Append(new Paragraph(new Run(new Text(cell))));
+                tableRow.Append(tableCell);
+            }
+            table.Append(tableRow);
         }
     }
 }

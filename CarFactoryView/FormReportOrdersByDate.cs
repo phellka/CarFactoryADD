@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CarFactoryContracts.BindingModels;
 using CarFactoryContracts.BusinessLogicsContracts;
 using Microsoft.Reporting.WinForms;
+using System.IO;
 
 namespace CarFactoryView
 {
@@ -21,14 +22,14 @@ namespace CarFactoryView
         {
             InitializeComponent();
             this.logic = logic;
-            //reportViewer = new ReportViewer
-            //{
-            //    Dock = DockStyle.Fill
-            //};
-            //reportViewer.LocalReport.LoadReportDefinition(new FileStream("ReportOrders.rdlc", FileMode.Open));
-            //Controls.Clear();
-            //Controls.Add(reportViewer);
-            //Controls.Add(panel);
+            reportViewer = new ReportViewer
+            {
+                Dock = DockStyle.Fill
+            };
+            reportViewer.LocalReport.LoadReportDefinition(new FileStream("ReportOrdersByDate.rdlc", FileMode.Open));
+            Controls.Clear();
+            Controls.Add(reportViewer);
+            Controls.Add(panel);
         }
 
         private void buttonToPdf_Click(object sender, EventArgs e)

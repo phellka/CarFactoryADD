@@ -50,12 +50,20 @@ namespace CarFactoryBusinessLogic.OfficePackage
                     JustificationType = WordJustificationType.Center
                 }
             });
-            CreateTableWarehouses(info);
+            CreateTableWarehouses(new List<string>() { "Название", "ФИО ответственного", "Дата создания"});
+            foreach(var warehouse in info.Warehouses)
+            {
+                CreateTableWarehouses(new List<string>() { 
+                    warehouse.WarehouseName,
+                    warehouse.Responsible,
+                    warehouse.DateCreate.ToShortDateString()
+                });
+            }
             SaveWord(info);
         }
         protected abstract void CreateWord(WordInfo info);
         protected abstract void CreateParagraph(WordParagraph paragraph);
         protected abstract void SaveWord(WordInfo info);
-        protected abstract void CreateTableWarehouses(WordInfo info);
+        protected abstract void CreateTableWarehouses(List<string> tableHeaderInfo);
     }
 }
