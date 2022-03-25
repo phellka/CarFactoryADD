@@ -140,7 +140,7 @@ namespace CarFactoryBusinessLogic.OfficePackage.Implements
             }
             table.Append(tableRowHeader);
         }
-        protected void addRowTable(List<string> tableRowInfo)
+        protected override void addRowTable(List<string> tableRowInfo)
         {
             TableRow tableRow = new TableRow();
             foreach (string cell in tableRowInfo)

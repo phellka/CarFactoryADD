@@ -53,7 +53,7 @@ namespace CarFactoryBusinessLogic.OfficePackage
             CreateTableWarehouses(new List<string>() { "Название", "ФИО ответственного", "Дата создания"});
             foreach(var warehouse in info.Warehouses)
             {
-                CreateTableWarehouses(new List<string>() { 
+                addRowTable(new List<string>() { 
                     warehouse.WarehouseName,
                     warehouse.Responsible,
                     warehouse.DateCreate.ToShortDateString()
@@ -65,5 +65,6 @@ namespace CarFactoryBusinessLogic.OfficePackage
         protected abstract void CreateParagraph(WordParagraph paragraph);
         protected abstract void SaveWord(WordInfo info);
         protected abstract void CreateTableWarehouses(List<string> tableHeaderInfo);
+        protected abstract void addRowTable(List<string> tableRowInfo);
     }
 }
